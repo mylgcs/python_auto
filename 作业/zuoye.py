@@ -33,12 +33,25 @@ num = 0
 #         print("素数：", x)
 #         count += 1
 # print('素数有：',count,'个')
-num = int(input("输入一个数："))
-i = 10
-count = 1
-while num != 0:
-    num //= i
-    if num > 0:
-        count += 1
-print(count)
-
+# num = int(input("输入一个数："))
+# i = 10
+# count = 1
+# while num != 0:
+#     num //= i
+#     if num > 0:
+#         count += 1
+# print(count)
+# len1=3000;
+# d=0
+# while len1 >= 5:
+#     d += 1
+#     len1=len1>>1;
+# print(d,"天后，绳子小于五米，长为：",len1)
+for i in range(100, 1000):
+# 使用取模，分别取出百位数、10位数、个位数
+# k = i // 10 % 10,需要注意运算符号和运算顺序，不能写为k=i//10%10
+    j = i // 100
+    k = i // 10 % 10
+    l = i % 10
+    if i == j ** 3 + k ** 3 + l ** 3:
+        print(i)
