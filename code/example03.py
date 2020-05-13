@@ -1,36 +1,16 @@
 """
-集合的运算
+用面向对象思维解决问题
 """
-set1 = {1, 2, 3, 4, 5, 6, 7}
-set2 = {2, 4, 6, 8, 10}
+from example02 import Circle
 
-# 交集
-# 方法一: 使用 & 运算符
-print(set1 & set2)                # {2, 4, 6}
-# 方法二: 使用intersection方法
-print(set1.intersection(set2))    # {2, 4, 6}
 
-# 并集
-# 方法一: 使用 | 运算符
-print(set1 | set2)         # {1, 2, 3, 4, 5, 6, 7, 8, 10}
-# 方法二: 使用union方法
-print(set1.union(set2))    # {1, 2, 3, 4, 5, 6, 7, 8, 10}
+def main():
+    """主函数（程序执行的入口）"""
+    r = float(input('请输入游泳池的半径: '))
+    c1, c2 = Circle(r), Circle(r + 3)
+    print(f'围墙的造价为: {c2.calc_perimeter() * 32.8:.1f}元')
+    print(f'过道的造价为: {(c2.calc_area() - c1.calc_area()) * 25.5:.1f}元')
 
-# 差集
-# 方法一: 使用 - 运算符
-print(set1 - set2)              # {1, 3, 5, 7}
-# 方法二: 使用difference方法
-print(set1.difference(set2))    # {1, 3, 5, 7}
 
-# 对称差
-# 方法一: 使用 ^ 运算符
-print(set1 ^ set2)                        # {1, 3, 5, 7, 8, 10}
-# 方法二: 使用symmetric_difference方法
-print(set1.symmetric_difference(set2))    # {1, 3, 5, 7, 8, 10}
-# 方法三: 对称差相当于两个集合的并集减去交集
-print((set1 | set2) - (set1 & set2))      # {1, 3, 5, 7, 8, 10}
-
-# 判断子集
-print(set2 <= set1)     # False
-# 判断超集
-print(set1 > set2)      # False
+if __name__ == '__main__':
+    main()
