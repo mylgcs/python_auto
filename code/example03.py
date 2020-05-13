@@ -1,34 +1,36 @@
 """
-高阶函数 - 把函数作为函数的参数或返回值
-在Python语言中，函数是一等公民（一等函数）
-1. 函数可以赋值给变量
-2. 函数可以作为函数的参数
-3. 函数可以作为函数的返回值
-
-通过高阶函数的用法，我们可以写出通用性和灵活性更强的代码
+集合的运算
 """
+set1 = {1, 2, 3, 4, 5, 6, 7}
+set2 = {2, 4, 6, 8, 10}
 
+# 交集
+# 方法一: 使用 & 运算符
+print(set1 & set2)                # {2, 4, 6}
+# 方法二: 使用intersection方法
+print(set1.intersection(set2))    # {2, 4, 6}
 
-def calc(*nums, init_value, fn):
-    result = init_value
-    for num in nums:
-        result = fn(result, num)
-    return result
+# 并集
+# 方法一: 使用 | 运算符
+print(set1 | set2)         # {1, 2, 3, 4, 5, 6, 7, 8, 10}
+# 方法二: 使用union方法
+print(set1.union(set2))    # {1, 2, 3, 4, 5, 6, 7, 8, 10}
 
+# 差集
+# 方法一: 使用 - 运算符
+print(set1 - set2)              # {1, 3, 5, 7}
+# 方法二: 使用difference方法
+print(set1.difference(set2))    # {1, 3, 5, 7}
 
-def add(x, y):
-    return x + y
+# 对称差
+# 方法一: 使用 ^ 运算符
+print(set1 ^ set2)                        # {1, 3, 5, 7, 8, 10}
+# 方法二: 使用symmetric_difference方法
+print(set1.symmetric_difference(set2))    # {1, 3, 5, 7, 8, 10}
+# 方法三: 对称差相当于两个集合的并集减去交集
+print((set1 | set2) - (set1 & set2))      # {1, 3, 5, 7, 8, 10}
 
-
-def sub(x, y):
-    return x - y
-
-
-def mul(x, y):
-    return x * y
-
-
-print(calc(1, 2, init_value=0, fn=add))
-print(calc(1, 2, 3, init_value=0, fn=sub))
-print(calc(1, 2, 3, 4, 5, init_value=1, fn=mul))
-print(calc(45, 12, 99, 87, 63, 90, 81, init_value=1, fn=mul))
+# 判断子集
+print(set2 <= set1)     # False
+# 判断超集
+print(set1 > set2)      # False

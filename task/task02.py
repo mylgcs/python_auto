@@ -1,14 +1,15 @@
-# 练习3：写一个函数，实现对传入的整数进行质因子分解的操作，返回所有质因子的列表。
+# 设计一个函数，传入的参数是一个列表，返回去掉列表中重复元素之后的列表，列表中的元素需要保持原来的顺序。
 
-def list_prime_factors(num):
-    factors, factor = [], 2
-    while num > 1:
-        if num % factor == 0:
-            factors.append(factor)
-            num //= factor
-        else:
-            factor += 1
-    return factors
+def remove_dups2(items):
+    items2 = []
+    seen = set()
+    for item in items:
+        if item not in seen:
+            items2.append(item)
+            seen.add(item)
+    return items2
 
 
-print(list_prime_factors(255))
+list1 = [1,2,8,1,5,8,3,2,4,1,9,1,2,5,5]
+
+print(remove_dups2(list1))

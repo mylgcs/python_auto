@@ -1,47 +1,24 @@
 """
-每个Python文件就是一个模块（module），模块可以管理函数，同名的函数可以放到不同的模块下
-每个文件夹就是一个包（package），包可以管理模块，同名的模块可以放到不同的包下
-每个Python包中通常都有一个__init__.py文件，使用模块和包可以解决程序中命名冲突的问题
-
-导入包和模块的语法：
-# from 模块 import 函数 [as 别名]
-from random import sample
-print(sample('abcdefg', 3))
-
-# import 模块 [as 别名]
-import random
-print(random.sample('abcdefg', 3))
-
-# from 包[.子包] import 模块 [as 别名]
-from homework.sub import homework09
-from homework.sub import homework10
-homework09.greet('骆昊')
-homework10.greet('骆昊')
-
-# from 包[.子包].模块 import 函数 [as 别名]
-from homework.sub.homework09 import greet as say_hello
-from homework.sub.homework10 import greet as say_goodbye
-
-say_hello('骆昊')
-say_goodbye('骆昊')
-
-说明：不推荐使用 from ... import * 这样的语法！用什么就导入什么更好！
+集合 - 把一定范围的、确定的、可以区别的事物当作一个整体来看待
+1. 无序性 - 元素之间没有所谓的顺序，也不能使用索引的方式获取元素
+2. 互异性 - 任何两个元素都可以相互区分的，每个元素只能出现一次
+3. 确定性 - 给定一个集合和一个元素，该元素或者属于或者不属于该集合
 """
-# from homework.sub import homework09 as h09
-# from homework.sub import homework10 as h10
-from homework.sub.homework09 import is_prime, greet as say_hello
-from homework.sub.homework10 import is_palindrome, greet as say_goodbye
+# 创建集合的第一种方式 - 字面量语法
+set1 = {1, 2, 3, 3, 3, 2}
+print(set1)
+print(len(set1))
 
+# 创建集合的第二种方式 - set函数（构造器）
+set2 = set('hello')
+print(set2)
+print(len(set2))
 
-def is_palindromic_prime(num):
-    """判断一个数是不是回文素数"""
-    return is_prime(num) and is_palindrome(num)
+# 创建集合的第三种方式 - 集合生成式
+set3 = {x for x in range(10)}
+print(set3)
+print(len(set3))
 
-
-say_hello('骆昊')
-say_goodbye('骆昊')
-
-print(is_palindromic_prime(12321))
-print(is_palindromic_prime(121))
-print(is_palindromic_prime(97))
-print(is_palindromic_prime(11))
+# set4 = {'apple', 'zoo', 'dog', 'banana', 'apple', 'dog'}
+# print(set4)
+# print(len(set4))
