@@ -1,24 +1,63 @@
 """
-集合 - 把一定范围的、确定的、可以区别的事物当作一个整体来看待
-1. 无序性 - 元素之间没有所谓的顺序，也不能使用索引的方式获取元素
-2. 互异性 - 任何两个元素都可以相互区分的，每个元素只能出现一次
-3. 确定性 - 给定一个集合和一个元素，该元素或者属于或者不属于该集合
+魔术方法：
+__str__ / __repr__ / __lt__
 """
-# 创建集合的第一种方式 - 字面量语法
-set1 = {1, 2, 3, 3, 3, 2}
-print(set1)
-print(len(set1))
 
-# 创建集合的第二种方式 - set函数（构造器）
-set2 = set('hello')
-print(set2)
-print(len(set2))
 
-# 创建集合的第三种方式 - 集合生成式
-set3 = {x for x in range(10)}
-print(set3)
-print(len(set3))
+class Student:
+    """学生"""
 
-# set4 = {'apple', 'zoo', 'dog', 'banana', 'apple', 'dog'}
-# print(set4)
-# print(len(set4))
+    def __init__(self, stuid, name):
+        self.id = stuid
+        self.name = name
+
+    # string
+    def __str__(self):
+        return f'{self.id}: {self.name}'
+
+    # representation
+    def __repr__(self):
+        return f'{self.id}: {self.name}'
+
+    # less than
+    def __lt__(self, other):
+        return self.name < other.name
+
+    # great than or equal to
+    def __ge__(self, other):
+        return self.name >= other.name
+
+    def study(self, course_name):
+        """学习
+        :param course_name: 学习的课程名称
+        """
+        print(f'{self.name}正在学习{course_name}')
+
+    def eat(self):
+        """吃饭"""
+        print(f'{self.name}正在吃饭')
+
+    def sleep(self):
+        """睡觉"""
+        print(f'{self.name}正在睡觉')
+
+
+def main():
+    """主函数"""
+    stu1 = Student(1001, 'Wang Dachui')
+    print(stu1)
+    stu2 = Student(1002, 'Bai Yuanfang')
+    print(stu2)
+    students = [stu1, stu2]
+    print(students)
+    print(ord('王'), ord('白'))
+    print(stu1 < stu2)
+    stu3 = Student(1003, 'Zhu Yuanzhang')
+    print(stu2 < stu1 < stu3)
+    print(stu2 >= stu1)
+    # for code in range(0x4e00, 0x9fa6):
+    #     print(chr(code), end='')
+
+
+if __name__ == '__main__':
+    main()
