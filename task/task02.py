@@ -1,15 +1,16 @@
-# 设计一个函数，传入的参数是一个列表，返回去掉列表中重复元素之后的列表，列表中的元素需要保持原来的顺序。
+# 在练习1的基础上，定义一个类来表示平面上的线段，提供长度属性和判断两条线段（对应的直线）是否平行的方法，重叠（共线）也算平行。
 
-def remove_dups2(items):
-    items2 = []
-    seen = set()
-    for item in items:
-        if item not in seen:
-            items2.append(item)
-            seen.add(item)
-    return items2
+from task import task01
 
+class Line:
+    """线段"""
 
-list1 = [1,2,8,1,5,8,3,2,4,1,9,1,2,5,5]
+    def __init__(self,start,end):
+        self.start = start
+        self.end = end
 
-print(remove_dups2(list1))
+    @property
+    def length(self):
+        """长度"""
+
+        return self.start.distance(self.end)
